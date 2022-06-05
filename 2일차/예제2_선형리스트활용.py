@@ -31,7 +31,6 @@ def delete_data( pos ) :
         namelist[i-1] = namelist[i]
         namelist[i] = None
     del( namelist[ count-1 ] )
-
 # 4. 정렬( 나이순으로 )  함수 구현  [ .sort 구현 ]
 def sort_data(  ) :     # 정렬 함수 선언
     for i in range( 0 , len(namelist) , 1 ) :       # i : 비교기준
