@@ -3,7 +3,7 @@
         // 메모리에 데이터(data) 저장 하는데 저장 되는 방법!!!!
         // 1. 스택 ( stack )
             // 예 ) 동전케이스 , ctrl + z ( 뒤로가기 ) 등등
-            // First in Last out => FILO
+            // Last in First out => LIFO
             // PUSH : 데이터 추가
             // POP : 데이터 추출
 
