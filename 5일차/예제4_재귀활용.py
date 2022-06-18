@@ -30,4 +30,3 @@ window.mainloop()   # GUI 열기
 
 
 
-
