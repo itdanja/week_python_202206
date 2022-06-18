@@ -8,7 +8,7 @@ import turtle
 def draw( length , n  ) :
         # length : 전체 삼각형의 길이
         # n : 함수당 재귀 횟수
-    if n >= 1 :제
+    if n >= 1 :
         for i in range(3) :
             t.forward( length )
             t.left(120)
