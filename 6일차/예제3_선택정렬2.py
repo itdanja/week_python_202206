@@ -12,6 +12,7 @@ def selectionSort( ary ) :
         tmp = ary[i]
         ary[i] = ary[minIdx]
         ary[minIdx] = tmp
+
     return ary
 # 정렬 실행
 dataary = [ 188 , 162 , 168 , 120 , 50 , 150 , 177 , 105 ]
