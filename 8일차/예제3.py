@@ -13,6 +13,16 @@
                 1개  3개  4개  5개  3개
                                             출구
 """
+
+def printMaze( arr ) :
+        # 2차원 리스트 출력
+        for row in range(ROW) :
+                for col in range(COL) :
+                        print("%3s" %  arr[row][col] , end = " ")
+                        # 지나온 길을 문자로 표기하기 위해 %d -> %s [ 형식문자 ]
+                print()
+        print()
+
 def growRich() :
         # 메모이제이션 [ 동적계획법 사용되는 기술 방식 ]
         memo = [ [0 for _ in range(COL)] for _ in range(ROW) ]
@@ -41,16 +51,32 @@ def growRich() :
                         else:
                                 # 오른쪽 방향이 더크면
                                 memo[row][col] = memo[row-1][col] + goldMaze[row][col]
+        #
+        print(" -------- 메모이제이션 출력 -------- ")
+        printMaze( memo )
 
-        # 지금 까지 지나온 길을 기록 하기 [ 먼저 생각하기 0 또는 * ]
+        print(" -------- 지나온 경로 출력 -------- ")
+        row = ROW-1     # 행  : 4  / 마지막행
+        col = COL-1     # 열 :  4  / 마지막열
+        memo[row][col] = "*"              # 입구에 도착
 
+        # 출구 부터 입구까지
+        while row !=0 or col !=0 : # 행 이거나 열이 0 이 아닐때 까지 반복 [ row 와 col  0 이면 종료  ]
+                if row-1 >= 0 and col-1 >= 0 :
+                        # 현재기준[4][4] 으로 위쪽 방향 , 왼쪽 방향 비교
+                        if memo[row-1][col] > memo[row][col-1] :
+                                # 위쪽 방향이 더 크면
+                                row -=1 # 위로 이동
+                        else:
+                                # 왼쪽 방향이 더 크면
+                                col -=1 # 왼쪽 이동
+                elif row-1 < 0 and col-1 >=0 : # 만약에 위쪽 방향에 인덱스가 없으면
+                        col -= 1 # 왼쪽 이동
+                else:  # 만약에 왼쪽 방향에 인덱스가 없으면
+                        row -= 1 # 위로 이동
+                memo[row][col] = "*"    # 해당 row / col -> 지나온 경로의 문자표시
 
-        # 2차원 배열[리스트]  출력하는 방식
-        for row in range( 0 , ROW ) :           # 행 반복
-                for col in range( 0 , COL ) :   # 열 반복
-                        print( memo[row][col] , end = " ")
-                print()
-
+        printMaze( memo )
         return memo[ ROW-1 ][COL-1 ]            # 마지막 인덱스 반환
 
 ROW , COL = 5 , 5   # 미로 칸
@@ -140,7 +166,12 @@ print(" 최대 황금 미로에서 얻을수 있는 황금 개수 :  " , macolGo
 """
 
 
-
+"""
+지나온 경로 순서도 
+        row = 4 col =4 
+                3 >= 0 and 3>= 0 
+                        [3][4] > [4][3] : 
+"""
 
 
 
